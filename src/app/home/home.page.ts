@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DataServiceService, Student } from '../common/data-service.service';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  studentsList:Student[]=[]
+  constructor(private common:DataServiceService) { }
 
-  constructor() {}
-
+  ngOnInit() {
+   this.studentsList= this.common.getStudent();
+  }
 }
